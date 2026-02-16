@@ -1,0 +1,212 @@
+@use "../../../base/root" as root;
+@use "../../../mixins/mixins" as mix;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+body {
+   background-color: #d5d5d5;
+   font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html {
+    font-size: 16px;
+}
+
+.block {
+    @include mix.flex;
+    margin: 3rem auto;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px 0px #e1e1e1;
+    padding: 2em;
+    padding-left: 2em;
+    padding-right: 2em;
+    max-width: 400px;
+    border-radius: 8px;
+    position: relative;
+}
+
+@property --angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+}
+
+.block::after, .block::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: conic-gradient(from var(--angle),transparent 80%, rgb(10, 10, 255));
+    z-index: -1;
+    border-radius: 8px;
+    padding: 5px;
+    animation: border 3s linear infinite;
+}
+
+.block::before {
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+@keyframes border {
+    0% {
+        --angle:0deg;
+    }
+
+    100% {
+        --angle: 360deg;
+    }
+}
+
+
+.signin {
+    font-size: clamp(1.4rem, 1.6vw, 1.5rem);
+    text-align: center;
+    font-weight: 650;
+    margin-bottom: 1rem;
+}
+
+.text {
+    font-size: clamp(0.9rem, 1vw, 1rem);
+    text-align: center;
+    color: root.$color_grey;
+    margin-bottom: 2.5rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+img {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: auto;
+    max-width: 15px;
+}
+
+.container1 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-height: 38.93px;
+    margin-bottom: 1rem;
+}
+
+
+.eye {
+    cursor: pointer;
+    border: none;
+    background-color: #fff;
+    outline: none;
+}
+
+.password, .email {
+   margin-bottom: 2rem;
+   border-radius: 3px;
+   border: 1px solid root.$color_lightgrey;
+   outline: 1px solid root.$color_lightgrey;
+   padding: 0.8em 0.9em;
+   width: 100%;
+   &:focus {
+    outline: 1.5px solid rgb(10, 10, 255);
+   }
+}
+
+
+input::placeholder {
+    font-size: clamp(0.83rem, 1vw, 0.9rem);
+    color: root.$color_grey;
+}
+
+
+.check {
+    display: flex;
+    align-items: center;
+    margin-top: 0rem;
+    gap: 8px;
+}
+
+.button1 {
+    border: none;
+    outline: none;
+    background-color: #fff;
+    margin-left: auto;
+    margin-top: 0.5rem;
+}
+
+.button2 {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: #fff;
+}
+
+.blue_text {
+    cursor: pointer;
+    font-size: clamp(0.85rem, 0.9vw, 0.85rem);
+    color:rgb(10, 10, 255);
+    margin-bottom: 1.8rem;
+    &:hover {
+            text-decoration: underline;
+        }
+}
+
+.h2 {
+    font-size: clamp(0.95rem, 1vw, 0.95rem);
+    cursor: pointer;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 6px;
+    background-color: rgb(10, 10, 255);
+    border: none;
+    margin-bottom: 2rem;
+}
+
+.bluetext {
+    color: rgb(10, 10, 255);
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+
+.main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.button3 {
+    border: none;
+    outline: none;
+    background-color: #fff;
+    font-size: clamp(0.9rem, 1vw, 0.9rem);
+}
+
+.text_below {
+    font-size: clamp(0.9rem, 1vw, 0.9rem);
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+}
